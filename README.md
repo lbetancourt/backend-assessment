@@ -25,6 +25,9 @@ We will especially consider:
 * Readability
 * Actually solving the problem
 
+## Diagram
+![Diagram](arquitectura.drawio.png)
+
 ## Instructions
 
 To run the application, run the following command in a terminal window:
@@ -48,6 +51,16 @@ Execute the following command to test the application:
 
 # using docker
 docker run --rm -u gradle -v "$PWD":/home/gradle/project -w /home/gradle/project gradle:8-jdk17 gradle test
+```
+
+## How to run
+execute on the project root
+```shell
+docker compose up
+```
+execute silent mode
+```shell
+docker compose up -d
 ```
 
 ## Challenge
