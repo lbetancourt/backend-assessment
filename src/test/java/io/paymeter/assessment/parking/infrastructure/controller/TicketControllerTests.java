@@ -73,6 +73,25 @@ class TicketControllerTests {
                 .when()
                 .post("/tickets/calculate")
                 .then()
-                .statusCode(200);
+                .statusCode(400);
+    }
+
+    @Test
+    void testCalculatePrice_NotFound() {
+        String requestBody = """
+                {
+                    "parkingId": "P000003",
+                    "from": "2023-09-15T10:00:00",
+                    "to": "2023-09-15T14:00:00"
+                }
+                """;
+
+        given()
+                .contentType(ContentType.JSON)
+                .body(requestBody)
+                .when()
+                .post("/tickets/calculate")
+                .then()
+                .statusCode(404);
     }
 }

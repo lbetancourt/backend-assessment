@@ -20,7 +20,7 @@ public class ControllerExceptionHandler {
                 .withMessage(e.getMessage())
                 .withCode(HttpStatus.INTERNAL_SERVER_ERROR.value())
                 .build();
-        return ResponseEntity.of(Optional.of(messageResponse));
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value()).body(messageResponse);
     }
 
     @ExceptionHandler(RuntimeException.class)
@@ -30,7 +30,7 @@ public class ControllerExceptionHandler {
                 .withMessage(e.getMessage())
                 .withCode(HttpStatus.BAD_REQUEST.value())
                 .build();
-        return ResponseEntity.of(Optional.of(messageResponse));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(messageResponse);
     }
 
     @ExceptionHandler(PricingNotFoundException.class)
@@ -40,7 +40,7 @@ public class ControllerExceptionHandler {
                 .withMessage(e.getMessage())
                 .withCode(HttpStatus.NOT_FOUND.value())
                 .build();
-        return ResponseEntity.of(Optional.of(messageResponse));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND.value()).body(messageResponse);
     }
 
     @ExceptionHandler(InvalidDateRangeException.class)
@@ -50,6 +50,6 @@ public class ControllerExceptionHandler {
                 .withMessage(e.getMessage())
                 .withCode(HttpStatus.BAD_REQUEST.value())
                 .build();
-        return ResponseEntity.of(Optional.of(messageResponse));
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST.value()).body(messageResponse);
     }
 }
