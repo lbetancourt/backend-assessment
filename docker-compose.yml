@@ -10,6 +10,21 @@ services:
       - '5432:5432'
     networks:
       - paymeter-network
+  paymeter-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 'paymeter-service'
+    environment:
+      POSTGRES_DATASOURCE_URL: jdbc:postgresql://postgres-server:5432/paymeter
+      POSTGRES_DB_USERNAME: postgres
+      POSTGRES_DB_PASSWORD: postgres
+    ports:
+      - '8080:8080'
+    depends_on:
+      - postgres
+    networks:
+      - paymeter-network
 networks:
   paymeter-network:
     driver: bridge
