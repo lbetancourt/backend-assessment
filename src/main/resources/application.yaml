@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: paymeter
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: ${POSTGRES_DATASOURCE_URL:jdbc:postgresql://localhost:5432/paymeter?ApplicationName=paymeter-product}
+    username: ${POSTGRES_DB_USERNAME:postgres}
+    password: ${POSTGRES_DB_PASSWORD:postgres}
+    hikari:
+      pool-name: paymeter-product
+      max-lifetime: 30000
+      maximum-pool-size: 2
+  jpa:
+    open-in-view: false

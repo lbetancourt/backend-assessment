@@ -1,0 +1,15 @@
+services:
+  postgres:
+    image: postgres:10-alpine
+    container_name: 'postgres-server'
+    environment:
+      POSTGRES_DB: paymeter
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - '5432:5432'
+    networks:
+      - paymeter-network
+networks:
+  paymeter-network:
+    driver: bridge

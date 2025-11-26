@@ -1,13 +1,12 @@
-package io.paymeter.assessment.pricing;
+package io.paymeter.assessment.pricing.domain;
 
-import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.Objects;
 
 public class Money {
     private static final Currency DEFAULT_CURRENCY = Currency.getInstance("EUR");
 
-    private final int amount;
+    private final long amount;
     private final Currency currency;
 
     public Money(int amount) {
@@ -15,12 +14,22 @@ public class Money {
         this.currency = DEFAULT_CURRENCY;
     }
 
-    public int getAmount() {
+    public Money(long amount) {
+        this.amount = amount;
+        this.currency = DEFAULT_CURRENCY;
+    }
+
+    public long getAmount() {
         return amount;
     }
 
     public String getCurrencyCode() {
         return currency.getCurrencyCode();
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d%s", Math.round(amount * 100), getCurrencyCode());
     }
 
     @Override
